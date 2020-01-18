@@ -194,8 +194,17 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners/* CODE HERE */) {
   /* CODE HERE */
+  /* use MAP */
+  //return runners.map(x => x.last_name +`, ` +x.first_name)
+  /* use forEach() */
+  const copy =[];
+  runners.forEach(function(item){
+    copy.push(item.last_name +`, ` + item.first_name)
+
+  })
+  return copy
 }
 
 /**
@@ -210,8 +219,15 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners/* CODE HERE */) {
   /* CODE HERE */
+  /* use MAP */
+  return  runners.map(x => x.first_name.toUpperCase());
+    /* use forEach() */
+    /*return runners.forEach(function(item){
+      item.first_name.toUpperCase() ;
+    })
+    */
 }
 
 /**
@@ -223,12 +239,14 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * Implement this function using filter().
  * 
  * @param runners array of runners like the one inside the /data/runners.js file.
- * @param tShirtSize string (possible values are "S", "M", "L", "XL", "2XL", "3XL").
+ * @param tShirtSize string (possible values (shirt_size) are "S", "M", "L", "XL", "2XL", "3XL").
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners,tShirtSize/* CODE HERE */) {
   /* CODE HERE */
+  const result = runners.filter(tShirtSize=>tShirtSize = runners.shirt_size)
+  return result
 }
 
 /**
