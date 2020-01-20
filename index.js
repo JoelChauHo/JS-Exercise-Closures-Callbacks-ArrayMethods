@@ -151,6 +151,8 @@ function processContains(item,list,callback/* CODE HERE */) {
   /* CODE HERE */
   //return callback(()=> {if (list.contains(item) )} 
   return callback(list.includes(item))
+
+  
 }
 
 /**
@@ -172,9 +174,17 @@ function processContains(item,list,callback/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
+function processDuplicateFree(list,callback/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+  return callback(list.sort().filter(function(item,pos,arr) {
+    return !pos || item != arr[pos-1];
+
+  }));
 }
+
+//return callback(numberList.reduce((acc,num) =>{ 
+//  return acc + num;
+//}, 0));
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
