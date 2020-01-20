@@ -245,8 +245,10 @@ function firstNamesAllCaps(runners/* CODE HERE */) {
 */
 function getRunnersByTShirtSize(runners,tShirtSize/* CODE HERE */) {
   /* CODE HERE */
-  const result = runners.filter(tShirtSize=>tShirtSize = runners.shirt_size)
-  return result
+  return runners.filter((run) => {
+    return  run.shirt_size === tShirtSize ;  // comparison use === not =}
+  });
+  
 }
 
 /**
@@ -257,10 +259,20 @@ function getRunnersByTShirtSize(runners,tShirtSize/* CODE HERE */) {
  * Implement this function using reduce().
  * 
  * @param runners array of runners like the one inside the /data/runners.js file.
- * @returns a number which is the sum of the donations by all runners.
+ * @returns a number which is the sum of the donations by all runners. donation
 */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(runners/* CODE HERE */) {
   /* CODE HERE */
+  return  runners.reduce((accumulator, currentValue) =>{ 
+    return accumulator + currentValue.donation;
+  },0);
+  
+
+  /* return callback(numberList.reduce((acc,num) =>{ 
+    return acc * num;
+  }, 1));
+  */
+
 }
 
 /////////////// CLOSURES ///////////////
@@ -281,12 +293,24 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  let count = -1;
+   return function counter()  {
+
+    return ++count ;  // increase then return
+    // different count++ :return then increase
+    console.log(`${count}`);
+    
   }
-  // BROKEN CODE ENDS
 }
+ 
+//const counter = counterMaker();
+ // counter();
+//  counter();
+//  counter();
+  
+  // BROKEN CODE ENDS
+  
+  
 
 /**
  * ### Challenge `counterMakerWithLimit`
@@ -308,9 +332,51 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+// version #1 of counterMakerWithLimit
+//function counterMakerWithLimit(max/* CODE HERE */) {
+  // CODE HERE */
+  /*
+  let count = 0;
+   return function counter() {
+  //  return function()  {
+    if (count === max){
+      count =0;
+      return count;
+    } else {  
+      return count++ ;
+    }
+    
+      }
 }
+*/
+
+/* version #2 of counterMakerWithLimit */
+function counterMakerWithLimit(max/* CODE HERE */) {
+  /* CODE HERE */
+  let count = 0;
+   return function counter() {
+  //  return function()  {
+    {count > max ? (count=0):max;
+        return count++ ;
+    }
+    
+    }
+}
+
+
+
+/*
+  const counter = counterMaker(3);
+  counter();
+  counter();
+  counter();
+  counter();
+  counter();
+  counter();
+  counter();
+  counter();
+  counter();
+*/
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
